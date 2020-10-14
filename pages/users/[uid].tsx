@@ -29,9 +29,32 @@ export default function UserShow() {
   }, [query.uid]);
   return (
     <div>
-      <div>{user ? user.name : 'ロード中…'}</div>
-      <button className="btn btn-primary">ボタン</button>
+    <nav
+      className="navbar navbar-expand-lg navbar-light mb-3"
+      style={{ backgroundColor: '#e3f2fd' }}
+    >
+      <div className="container">
+        <div className="mr-auto">
+          <a className="navbar-brand" href="#">
+            Navbar
+          </a>
+        </div>
+        <form className="d-flex">
+          <button className="btn btn-outline-primary" type="submit">
+            Search
+          </button>
+        </form>
+      </div>
+    </nav>
+    <div className="container">
+      {user && (
+        <div className="text-center">
+          <h1 className="h4">{user.name}さんのページ</h1>
+          <div className="m-5">{user.name}さんに質問しよう！</div>
+        </div>
+      )}
     </div>
+  </div>
   )
 }
 
