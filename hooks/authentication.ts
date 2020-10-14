@@ -16,6 +16,8 @@ export function useAuthentication() {
       return
     }
 
+    console.log('Start useEffect')
+
     firebase
       .auth()
       .signInAnonymously()
@@ -26,6 +28,7 @@ export function useAuthentication() {
 
     firebase.auth().onAuthStateChanged(function (firebaseUser) {
       if (firebaseUser) {
+        console.log('Set user')
         setUser({
           uid: firebaseUser.uid,
           isAnonymous: firebaseUser.isAnonymous,

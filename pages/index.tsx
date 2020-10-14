@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useAuthentication } from '../hooks/authentication'
+import Link from 'next/link'
+
 
 export default function Home() {
   const { user } = useAuthentication()
@@ -15,6 +17,9 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
           <p>{user?.uid || '未ログイン'}</p>
+          <Link href="second">
+            <a>Go to secondpage</a>
+          </Link>
         </h1>
 
         <p className={styles.description}>
