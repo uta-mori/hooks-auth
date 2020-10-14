@@ -27,7 +27,12 @@ export default function UserShow() {
     }
     loadUser();
   }, [query.uid]);
-  return <div>{user ? user.name : "ロード中…"}</div>;
+  return (
+    <div>
+      <div>{user ? user.name : 'ロード中…'}</div>
+      <button className="btn btn-primary">ボタン</button>
+    </div>
+  )
 }
 
 type Query = {
