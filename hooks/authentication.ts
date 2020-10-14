@@ -42,7 +42,8 @@ export function useAuthentication() {
         console.log('Set user')
         const loginUser: User = {
           uid: firebaseUser.uid,
-          isAnonymous: firebaseUser.isAnonymous
+          isAnonymous: firebaseUser.isAnonymous,
+          name: '',
         }
         setUser(loginUser)
         createUserIfNotFound(loginUser)
