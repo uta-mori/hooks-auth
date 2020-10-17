@@ -4,6 +4,7 @@ import { User } from "../../models/User";
 import * as firebase from "firebase/app";
 import "../../components/Layout"
 import Layout from "../../components/Layout";
+import { toast } from 'react-toastify';
 
 export default function UserShow() {
   const [user, setUser] = useState<User>(null);
@@ -43,10 +44,17 @@ export default function UserShow() {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
     setIsSending(false)
+    toast.success('質問を送信しました。', {
+      position: 'bottom-left',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    })
     setBody('')
-    alert('質問を投稿しました')
   }
-
   return (
     <Layout>
       {user && (

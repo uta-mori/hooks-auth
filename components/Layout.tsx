@@ -1,9 +1,12 @@
+import { ToastContainer } from 'react-toastify';
+
+
 export default function Layout({ children }) {
   return (
     <div>
       <nav
         className="navbar navbar-expand-lg navbar-light mb-3"
-        style={{ backgroundColor: '#e3f2fd' }}
+        style={{ backgroundColor: "#e3f2fd" }}
       >
         <div className="container">
           <div className="mr-auto">
@@ -19,6 +22,7 @@ export default function Layout({ children }) {
         </div>
       </nav>
       <div className="container">{children}</div>
+      <ToastContainer />
     </div>
-  )
+  );
 }
