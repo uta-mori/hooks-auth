@@ -38,7 +38,7 @@ export default function UserShow() {
     setIsSending(true)
     await firebase.firestore().collection('questions').add({
       senderUid: firebase.auth().currentUser.uid,
-      recieveUid: user.uid,
+      receiverUid: user.uid,
       body,
       isRelied: false,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
