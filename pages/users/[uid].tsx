@@ -2,14 +2,14 @@ import { useRouter } from "next/router";
 import { FormEvent, useEffect, useState } from "react";
 import { User } from "../../models/User";
 import * as firebase from "firebase/app";
-import "../../components/Layout"
+import "../../components/Layout";
 import Layout from "../../components/Layout";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 export default function UserShow() {
   const [user, setUser] = useState<User>(null);
-  const [body, setBody] = useState('')
-  const [isSending, setIsSending] = useState(false)
+  const [body, setBody] = useState("");
+  const [isSending, setIsSending] = useState(false);
   const router = useRouter();
   const query = router.query as Query;
 
@@ -33,27 +33,27 @@ export default function UserShow() {
     loadUser();
   }, [query.uid]);
 
-  async function onSubmit(e: FormEvent<HTMLFormElement>){
-    e.preventDefault
-    setIsSending(true)
-    await firebase.firestore().collection('questions').add({
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSending(true);
+    await firebase.firestore().collection("questions").add({
       senderUid: firebase.auth().currentUser.uid,
       receiverUid: user.uid,
       body,
-      isRelied: false,
+      isReplied: false,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    })
-    setIsSending(false)
-    toast.success('質問を送信しました。', {
-      position: 'bottom-left',
+    });
+    setIsSending(false);
+    toast.success("質問を送信しました。", {
+      position: "bottom-left",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    })
-    setBody('')
+    });
+    setBody("");
   }
   return (
     <Layout>
@@ -69,13 +69,15 @@ export default function UserShow() {
                   placeholder="おげんきですか？"
                   rows={6}
                   value={body}
-                  onChange={(e)=>setBody(e.target.value)}
+                  onChange={(e) => setBody(e.target.value)}
                   required
                 ></textarea>
                 <div className="m-3">
                   {isSending ? (
-                    <div className="spinner-border text-secondary" role="status">
-                    </div>
+                    <div
+                      className="spinner-border text-secondary"
+                      role="status"
+                    ></div>
                   ) : (
                     <button type="submit" className="btn btn-primary">
                       質問を送信する
@@ -88,11 +90,9 @@ export default function UserShow() {
         </div>
       )}
     </Layout>
-  )
+  );
 }
 
 type Query = {
   uid: string;
 };
-
-
