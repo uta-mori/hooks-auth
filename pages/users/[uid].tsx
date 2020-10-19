@@ -67,9 +67,9 @@ export default function UserShow() {
                 <textarea
                   className="form-control"
                   placeholder="おげんきですか？"
+                  rows={6}
                   value={body}
                   onChange={(e)=>setBody(e.target.value)}
-                  rows={6}
                   required
                 ></textarea>
                 <div className="m-3">
