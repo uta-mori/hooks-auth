@@ -3,7 +3,7 @@ import { Question } from "../../models/Question";
 import Layout from "../../components/Layout";
 import { useAuthentication } from "../../hooks/authentication";
 import * as firebase from "firebase/app";
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function QuestionsReceived() {
   const [questions, setQuestions] = useState<Question[]>([]);
